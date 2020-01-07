@@ -1,5 +1,4 @@
 import re
-from urllib.parse import urljoin
 
 import typesystem
 from apistar.document import Document, Field, Link, Section
@@ -343,6 +342,12 @@ definitions["SecurityScheme"] = typesystem.Object(
 
 
 METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
+
+
+def urljoin(base, url):
+    if url[:1] != '/':
+        url = '/' + url
+    return base + url
 
 
 def lookup(value, keys, default=None):
